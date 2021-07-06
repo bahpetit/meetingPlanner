@@ -9,7 +9,7 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.time.LocalDate;
 
-import static org.example.domain.MeetingType.*;
+import static org.example.domain.MeetingType.VC;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MeetingTest {

@@ -2,7 +2,8 @@ package org.example.domain;
 
 import lombok.*;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -36,6 +37,11 @@ public class Meeting {
         if (o == null || getClass() != o.getClass()) return false;
         Meeting that = (Meeting) o;
         return that.getStart().isBefore(this.end.plusHours(1)) && that.getEnd().isAfter(this.start);
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
     }
 
 }
