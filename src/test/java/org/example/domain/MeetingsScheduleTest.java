@@ -6,7 +6,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MeetingsScheduleTest {
 
@@ -28,14 +29,10 @@ class MeetingsScheduleTest {
     void shouldReturnOptimalRoom() {
         // Algo meilleur voisin
         Meeting reunion01 = new Meeting(LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), MeetingType.VC, 8);
-        List<Room> rooms = Arrays.asList( new Room("E1001", 23), new Room("E1002", 10), new Room("E1003", 8));
-        assertEquals(new Room("E1003", 8), new MeetingsSchedule().getOptimaleRoom(reunion01, rooms));
-    }
+        List<Room> rooms = Arrays.asList(new Room("E1001", 23), new Room("E1003", 8), new Room("E1004", 4));
 
-    void shouldReturnEquipedRoom(){
-        //Algo de glouton
-        //Meilleur choix pour les equiments pour les salle manqunt
-        Meeting reunion01 = new Meeting(LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), MeetingType.VC, 8);
-
+        Room optimalRoom = new MeetingsSchedule().getOptimaleRoom(reunion01, rooms);
+        Room expectedRoom = new Room("E1003", 8);
+        assertTrue(expectedRoom.equals(optimalRoom));
     }
 }

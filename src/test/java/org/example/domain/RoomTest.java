@@ -6,9 +6,10 @@ import org.junit.jupiter.api.Test;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.example.domain.MeetingType.VC;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class RoomTest {
@@ -35,14 +36,16 @@ class RoomTest {
 
     @Test
     void testNameNull(){
-        Room room = new Room(null, 23);
-        assertFalse(validator.validate(room).isEmpty());
+        assertThrows(NullPointerException.class, () -> {
+            Room room = new Room(null, 23);
+        });
     }
 
     @Test
     void testCapaciteNull(){
-        Room room = new Room("E1001", null);
-        assertFalse(validator.validate(room).isEmpty());
+        assertThrows(NullPointerException.class, () -> {
+            Room room = new Room("E1001", null);
+        });
     }
 
     @Test

@@ -2,17 +2,25 @@ package org.example.domain;
 
 import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+@Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @RequiredArgsConstructor
-@ToString(of={"id", "description", "start", "end", "nbPerson"})
+@ToString(of={"id", "start", "end", "nbPerson"})
 @EqualsAndHashCode(of={"start", "end"})
 @Data
 public class Meeting {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Min(value = 1)
     private Long id;
 
@@ -43,5 +51,4 @@ public class Meeting {
     public int hashCode() {
         return 1;
     }
-
 }
