@@ -1,5 +1,5 @@
 package org.example.domain;
 
-public enum Equipmenttype {
+public enum EquipmentType {
     Neant, Ecran, Pieuvre, Tableau, Webcam
 }

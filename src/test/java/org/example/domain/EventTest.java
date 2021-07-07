@@ -24,7 +24,7 @@ class EventTest {
     @Test
     void testEventOK() {
         Room room = new  Room("E1001", 23);
-        Meeting meeting = new Meeting(1L, LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
+        Meeting meeting = new Meeting(LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
         Event event = new Event(1L, room, meeting);
         assertTrue(validator.validate(event).isEmpty());
     }
@@ -32,7 +32,7 @@ class EventTest {
     @Test
     void testIdNegatif() {
         Room room = new  Room("E1001", 23);
-        Meeting meeting = new Meeting(1L, LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
+        Meeting meeting = new Meeting(LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
         Event event = new Event(-1L, room, meeting);
         assertFalse(validator.validate(event).isEmpty());
     }
@@ -40,7 +40,7 @@ class EventTest {
     @Test
     void testIdZero() {
         Room room = new  Room("E1001", 23);
-        Meeting meeting = new Meeting(1L, LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
+        Meeting meeting = new Meeting(LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
         Event event = new Event(0L, room, meeting);
         assertFalse(validator.validate(event).isEmpty());
     }
@@ -48,7 +48,7 @@ class EventTest {
     @Test
     void testRoomNull() {
         assertThrows(NullPointerException.class, () -> {
-            Meeting meeting = new Meeting(1L, LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
+            Meeting meeting = new Meeting(LocalDate.now().atTime(9, 0), LocalDate.now().atTime(10, 0), VC, 8);
             Event event = new Event(1L, null, meeting);
         });
     }
